@@ -232,20 +232,20 @@
     <div class="layout">
       <aside class="panel filter-panel">
         <div class="filter-header">
-          <div class="filter-title">Node Filter</div>
-          <div class="filter-help">Search countries by <code>Название на русском</code> from <code>spec.csv</code>. For the selected country, indicators with <code>m_cp = 1</code> keep their color.</div>
-          <div id="filter-summary" class="filter-summary">Loading nodes...</div>
+          <div class="filter-title">Фильтр</div>
+          <div class="filter-help"></div>
+          <div id="filter-summary" class="filter-summary">Загрузка...</div>
         </div>
         <div class="filter-controls">
           <div class="filter-inline">
-            <input id="country-filter" class="filter-search" type="search" list="country-filter-options" placeholder="Поиск страны по-русски">
-            <button id="clear-country-filter" class="filter-button filter-button-small" type="button">Clear</button>
+            <input id="country-filter" class="filter-search" type="search" list="country-filter-options" placeholder="Поиск страны">
+            <button id="clear-country-filter" class="filter-button filter-button-small" type="button">Очистить</button>
           </div>
           <datalist id="country-filter-options"></datalist>
-          <input id="node-search" class="filter-search" type="search" placeholder="Search by node id or label">
+          <input id="node-search" class="filter-search" type="search" placeholder="Поиск по индексу">
           <div class="filter-actions">
-            <button id="select-visible" class="filter-button" type="button">Select visible</button>
-            <button id="clear-selection" class="filter-button" type="button">Show all colors</button>
+            <button id="select-visible" class="filter-button" type="button">Показать выбранные</button>
+            <button id="clear-selection" class="filter-button" type="button">Показать все</button>
           </div>
         </div>
         <div id="node-filter-list" class="filter-list"></div>
@@ -532,7 +532,7 @@
 
       if (!state.selectedNodeIds.size && !state.selectedCountryId) {
         summary.textContent =
-          "No selection active. " + state.visibleNodeIds.length + " nodes match the current search.";
+          "Ничего не выбрано. " + state.visibleNodeIds.length + " совпадают с фильтром.";
         return;
       }
 
@@ -569,9 +569,9 @@
         .links(links)
         .x("x")
         .y("y")
-        .size((d) => (d.size ? +d.size * 2 : 10))
-        .sizeMin(3)
-        .sizeMax(25)
+        .size((d) => (d.size ? +d.size * 1.05 : 5))
+        .sizeMin(2)
+        .sizeMax(14)
         .label(() => "")
         .shapeConfig({
           fill: (d) => d.displayColor || d.color,
@@ -730,7 +730,7 @@
           title: d.title || "",
           x: num(d.x, 0),
           y: num(d.y, 0),
-          size:  d.size+15,
+          size: num(d.size, 5),
           color: d.color || "#4e79a7",
           value: num(d.value, 0)
         }));
