@@ -279,6 +279,27 @@
         .trim();
     }
 
+    function getNodeSortNumber(nodeId) {
+      const sdgMatch = String(nodeId || "").match(/sdg(\d+)/i);
+      if (sdgMatch) {
+        return Number(sdgMatch[1]);
+      }
+
+      const anyNumberMatch = String(nodeId || "").match(/(\d+)/);
+      return anyNumberMatch ? Number(anyNumberMatch[1]) : Number.POSITIVE_INFINITY;
+    }
+
+    function compareNodesByIdNumber(a, b) {
+      const aNumber = getNodeSortNumber(a.id);
+      const bNumber = getNodeSortNumber(b.id);
+
+      if (aNumber !== bNumber) {
+        return aNumber - bNumber;
+      }
+
+      return a.id.localeCompare(b.id, undefined, { numeric: true });
+    }
+
     function extractId(datum) {
       if (!datum || typeof datum !== "object") return "";
       if (typeof datum.id === "string") return datum.id;
@@ -741,7 +762,7 @@
 
       state.allNodes = nodes
         .slice()
-        .sort((a, b) => a.id.localeCompare(b.id));
+        .sort(compareNodesByIdNumber);
       state.allLinks = links;
       state.countryIndicatorMap = specData.countryIndicatorMap;
       state.countryNameMap = specData.countryNameMap;
