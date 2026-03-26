@@ -353,15 +353,15 @@
       visibleNodeIds: []
     };
     const mutedNodeColor = "#c7cdd6";
-    const clusterDefinitions = [
-      { color: "#D64550", name: "i. Ограниченная индустриализация" },
-      { color: "#DBA4EF", name: "ii. Показатели экономики с ограниченной сложностью" },
-      { color: "#E5B983", name: "iii. Здоровье и выживаемость" },
-      { color: "#4B5563", name: "iv. Начальное образование и здоровье детей" },
-      { color: "#74E0D0", name: "v. Базовые услуги и инфраструктура" },
-      { color: "#376C8A", name: "vi. Урбанизация и охват социальными услугами" },
-      { color: "#008A3E", name: "vii. Качественные институты и инновации" }
-    ];
+    // const clusterDefinitions = [
+    //   { color: "#D64550", name: "i. Ограниченная индустриализация" },
+    //   { color: "#DBA4EF", name: "ii. Показатели экономики с ограниченной сложностью" },
+    //   { color: "#E5B983", name: "iii. Здоровье и выживаемость" },
+    //   { color: "#4B5563", name: "iv. Начальное образование и здоровье детей" },
+    //   { color: "#74E0D0", name: "v. Базовые услуги и инфраструктура" },
+    //   { color: "#376C8A", name: "vi. Урбанизация и охват социальными услугами" },
+    //   { color: "#008A3E", name: "vii. Качественные институты и инновации" }
+    // ];
 
     function num(value, fallback) {
       const parsed = Number(value);
@@ -885,8 +885,8 @@
       document.getElementById("status").textContent = "Loading nodes.json, edges.csv, and spec.csv...";
 
       const [nodesResponse, edgesResponse, specResponse] = await Promise.all([
-        fetch("nodes.json", { cache: "no-store" }),
-        fetch("edges.csv", { cache: "no-store" }),
+        fetch("nodes_07_3.json", { cache: "no-store" }),
+        fetch("edges_07_3.csv", { cache: "no-store" }),
         fetch("spec.csv", { cache: "no-store" })
       ]);
 
