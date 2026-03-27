@@ -885,8 +885,8 @@
       document.getElementById("status").textContent = "Loading nodes.json, edges.csv, and spec.csv...";
 
       const [nodesResponse, edgesResponse, specResponse] = await Promise.all([
-        fetch("nodes_07_3.json", { cache: "no-store" }),
-        fetch("edges_07_3.csv", { cache: "no-store" }),
+        fetch("nodes_07_3_wdeleted.json", { cache: "no-store" }),
+        fetch("edges_07_3_wdeleted.csv", { cache: "no-store" }),
         fetch("spec.csv", { cache: "no-store" })
       ]);
 
