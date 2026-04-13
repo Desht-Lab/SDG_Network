@@ -17,6 +17,7 @@
       --accent-a: #176087;
       --accent-b: #d79c3b;
       --accent-c: #7b2f45;
+      --accent-d: #2f6f54;
       --shadow: 0 18px 50px rgba(30, 36, 48, 0.12);
       --radius: 24px;
     }
@@ -90,7 +91,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -148,6 +149,10 @@
 
     .tag.space {
       background: var(--accent-c);
+    }
+
+    .tag.relative {
+      background: var(--accent-d);
     }
 
     h2 {
@@ -239,6 +244,21 @@
           <h2>Index Space</h2>
           <p>Переход к пространственной визуализации индексов.</p>
           <div class="path">Index_space.html</div>
+          <div class="linkline">Open visualization</div>
+        </div>
+      </a>
+
+      <a class="card" href="Index_space_RELATIVE.html">
+        <img
+          id="preview-space-relative"
+          class="preview"
+          alt="Preview for index space relative"
+          src="Indexrelat_git.png">
+        <div class="content">
+          <span class="tag relative">Relative</span>
+          <h2>Index Space Relative</h2>
+          <p>Relative index space view.</p>
+          <div class="path">Index_space_RELATIVE.html</div>
           <div class="linkline">Open visualization</div>
         </div>
       </a>
