@@ -900,7 +900,7 @@
       const [nodesRes, edgesRes, specRes] = await Promise.all([
         fetch("nodes_07_3_wdeleted05052026.json",   { cache: "no-store" }),
         fetch("edges_07_33_wdeleted.csv",   { cache: "no-store" }),
-        fetch("spec_dynamics.csv",          { cache: "no-store" })
+        fetch("spec_dynamics05052026.csv",          { cache: "no-store" })
       ]);
 
       if (!nodesRes.ok) throw new Error("Could not load nodes_07_3_wdeleted.json");
