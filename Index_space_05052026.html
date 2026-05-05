@@ -332,7 +332,7 @@
       countryIndicatorMap: new Map(),
       countryNameMap: new Map(),
       countryLookup: new Map(),
-      // Map: indicatorId → clusterName (from spec_dynamics.csv)
+      // Map: indicatorId → clusterName (from spec_dynamics05052026.csv)
       indicatorClusterMap: new Map(),
       // Ordered list of unique clusters: [{ name, color }]
       clusterList: [],
@@ -476,10 +476,10 @@
       );
 
       if (countryIdx < 0 || indicatorIdx < 0 || mcpIdx < 0) {
-        throw new Error("spec_dynamics.csv must include id, indicator, and m_cp columns");
+        throw new Error("spec_dynamics05052026.csv must include id, indicator, and m_cp columns");
       }
       if (yearIdx < 0) {
-        throw new Error("spec_dynamics.csv must include a year column");
+        throw new Error("spec_dynamics05052026.csv must include a year column");
       }
 
       const countryMap        = new Map();  // "countryId|year" → Set<indicatorId>
@@ -895,7 +895,7 @@
 
     /* ── main ── */
     async function main() {
-      document.getElementById("status").textContent = "Loading nodes.json, edges.csv, and spec_dynamics.csv...";
+      document.getElementById("status").textContent = "Loading nodes.json, edges.csv, and spec_dynamics05052026.csv...";
 
       const [nodesRes, edgesRes, specRes] = await Promise.all([
         fetch("nodes_07_3_wdeleted05052026.json",   { cache: "no-store" }),
@@ -905,7 +905,7 @@
 
       if (!nodesRes.ok) throw new Error("Could not load nodes_07_3_wdeleted.json");
       if (!edgesRes.ok) throw new Error("Could not load edges_07_33_wdeleted.csv");
-      if (!specRes.ok)  throw new Error("Could not load spec_dynamics.csv");
+      if (!specRes.ok)  throw new Error("Could not load spec_dynamics05052026.csv");
 
       const rawNodes = await nodesRes.json();
       const edgesCsv = await edgesRes.text();
